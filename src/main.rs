@@ -3,7 +3,7 @@ mod inputs;
 use inputs::{Day, InputType, Parts, Puzzle};
 
 fn main() {
-    let day = Day::Day2;
+    let day = Day::Day3;
     let part = Parts::Part2;
     let input_type = InputType::Input;
     // let input_type = InputType::Example;

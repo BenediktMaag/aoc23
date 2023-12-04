@@ -2,6 +2,7 @@ use std::fs;
 use std::time::Instant;
 mod day1;
 mod day2;
+mod day3;
 
 pub struct Puzzle {
     pub day: Day,
@@ -12,8 +13,7 @@ pub struct Puzzle {
 impl Puzzle {
     fn as_path(&self) -> String {
         format!(
-            "input/{}/{}_{}_{}.txt",
-            self.day.as_str(),
+            "input/{}/{}_{}.txt",
             self.day.as_str(),
             self.part.as_str(),
             self.input_type.as_str()
@@ -33,6 +33,7 @@ impl Puzzle {
         match (&self.day, &self.part) {
             (Day::Day1, part) => day1::execute(&input, part),
             (Day::Day2, part) => day2::execute(&input, part),
+            (Day::Day3, part) => day3::execute(&input, part),
         }
 
         println!("Execution took {} ms", start.elapsed().as_millis())
@@ -43,6 +44,7 @@ impl Puzzle {
 pub enum Day {
     Day1,
     Day2,
+    Day3,
 }
 
 impl Day {
@@ -50,6 +52,7 @@ impl Day {
         match self {
             Self::Day1 => "day1",
             Self::Day2 => "day2",
+            Self::Day3 => "day3",
         }
     }
 }
