@@ -1,6 +1,7 @@
 use std::fs;
 use std::time::Instant;
 mod day1;
+mod day2;
 
 pub struct Puzzle {
     pub day: Day,
@@ -31,20 +32,24 @@ impl Puzzle {
 
         match (&self.day, &self.part) {
             (Day::Day1, part) => day1::execute(&input, part),
+            (Day::Day2, part) => day2::execute(&input, part),
         }
 
         println!("Execution took {} ms", start.elapsed().as_millis())
     }
 }
 
+#[allow(dead_code)]
 pub enum Day {
     Day1,
+    Day2,
 }
 
 impl Day {
     fn as_str(&self) -> &str {
         match self {
             Self::Day1 => "day1",
+            Self::Day2 => "day2",
         }
     }
 }
