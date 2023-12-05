@@ -3,6 +3,7 @@ use std::time::Instant;
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 
 pub struct Puzzle {
     pub day: Day,
@@ -34,6 +35,7 @@ impl Puzzle {
             (Day::Day1, part) => day1::execute(&input, part),
             (Day::Day2, part) => day2::execute(&input, part),
             (Day::Day3, part) => day3::execute(&input, part),
+            (Day::Day4, part) => day4::execute(&input, part),
         }
 
         println!("Execution took {} ms", start.elapsed().as_millis())
@@ -45,6 +47,7 @@ pub enum Day {
     Day1,
     Day2,
     Day3,
+    Day4,
 }
 
 impl Day {
@@ -53,6 +56,7 @@ impl Day {
             Self::Day1 => "day1",
             Self::Day2 => "day2",
             Self::Day3 => "day3",
+            Self::Day4 => "day4",
         }
     }
 }
