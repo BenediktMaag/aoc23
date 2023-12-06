@@ -32,7 +32,7 @@ pub fn execute(input: &str, part: &Parts) {
 
 #[derive(Debug)]
 struct Card {
-    id: u32,
+    _id: u32,
     winning_numbers: HashSet<u32>,
     having_numbers: Vec<u32>,
 }
@@ -67,7 +67,7 @@ impl Card {
         let mut chars = StringParser::new(input.chars());
         chars.dismiss_str("Card");
         chars.dismiss_any_whitespace();
-        let id = chars.parse_u32();
+        let id = chars.parse_num();
         chars.dismiss_char(':');
         chars.dismiss_any_whitespace();
 
@@ -81,7 +81,7 @@ impl Card {
                 }
                 Some(' ') => chars.dismiss_any_whitespace(),
                 Some('0'..='9') => {
-                    winning_numbers.insert(chars.parse_u32());
+                    winning_numbers.insert(chars.parse_num::<u32>());
                 }
                 Some(_) | None => {
                     panic!()
@@ -95,7 +95,7 @@ impl Card {
             match chars.peek() {
                 Some(' ') => chars.dismiss_any_whitespace(),
                 Some('0'..='9') => {
-                    having_numbers.push(chars.parse_u32());
+                    having_numbers.push(chars.parse_num::<u32>());
                 }
                 Some(_) => {
                     panic!()
@@ -105,7 +105,7 @@ impl Card {
         }
 
         Card {
-            id,
+            _id: id,
             winning_numbers,
             having_numbers,
         }

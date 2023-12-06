@@ -4,6 +4,8 @@ mod day1;
 mod day2;
 mod day3;
 mod day4;
+mod day5;
+mod day6;
 
 pub struct Puzzle {
     pub day: Day,
@@ -36,9 +38,16 @@ impl Puzzle {
             (Day::Day2, part) => day2::execute(&input, part),
             (Day::Day3, part) => day3::execute(&input, part),
             (Day::Day4, part) => day4::execute(&input, part),
+            (Day::Day5, part) => day5::execute(&input, part),
+            (Day::Day6, part) => day6::execute(&input, part),
         }
-
-        println!("Execution took {} ms", start.elapsed().as_millis())
+        if start.elapsed().as_secs() >= 5 {
+            println!("Execution took {}s", start.elapsed().as_secs())
+        } else if start.elapsed().as_millis() >= 5 {
+            println!("Execution took {} ms", start.elapsed().as_millis())
+        } else if start.elapsed().as_micros() >= 5 {
+            println!("Execution took {} µs", start.elapsed().as_micros())
+        }
     }
 }
 
@@ -48,6 +57,8 @@ pub enum Day {
     Day2,
     Day3,
     Day4,
+    Day5,
+    Day6,
 }
 
 impl Day {
@@ -57,6 +68,8 @@ impl Day {
             Self::Day2 => "day2",
             Self::Day3 => "day3",
             Self::Day4 => "day4",
+            Self::Day5 => "day5",
+            Self::Day6 => "day6",
         }
     }
 }
